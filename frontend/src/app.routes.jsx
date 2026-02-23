@@ -1,0 +1,26 @@
+
+import {createBrowserRouter } from "react-router"
+import App from "./App"
+import Login from "./features/authentication/pages/Login"
+import Register from "./features/authentication/pages/Register"
+
+const router = createBrowserRouter([
+    {
+        path : '/',
+        element : <App/>,
+        children : [
+            {
+                path : "/login", 
+                element : <Login/>
+            }, 
+            {
+                path : '/register', 
+                element : <Register/>
+            }
+
+        ]
+    }
+])
+
+
+export default router;

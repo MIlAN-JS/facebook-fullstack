@@ -1,0 +1,31 @@
+footer{
+    
+    background-color: #0C1014;
+    display: flex;
+    align-items: center;
+   flex-direction: column;
+   gap: 1rem;
+    width: 100%;
+    padding-block: 1rem;
+
+     a{
+            text-decoration: none;
+            color: #A1A1A2;
+            font-size: 0.8rem;
+         }
+   
+
+    .footer-items{
+         display: flex;
+         align-items: center;
+         gap: 1.5rem;
+          
+      
+    }
+
+    .footer-data{
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+    }
+}
