@@ -1,12 +1,30 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import instaLogo from "/images/instaLogoMain.png"
 import headingImg from "/images/insta-pic.png"
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import "../styles/login.scss"
+import useAuth from '../hooks/useAuth'
+
 const Login = () => {
 
-  const [email , setEmail] = useState()
-  const [password , setPassword] = useState()
+
+  const [email , setEmail] = useState("")
+  const [password , setPassword] = useState("")
+
+  const {loginHandler , user } = useAuth()
+  const navigate = useNavigate()
+
+  const loginSubmitHandler = async(e)=>{
+    e.preventDefault()
+
+    await loginHandler({email ,password})
+    navigate("/")
+  
+  }
+
+
+
+ 
 
 
   return (
@@ -31,7 +49,9 @@ const Login = () => {
       
       <div className="login-form">
 
-      <form action="">
+      <form  onSubmit={(e)=>{
+          loginSubmitHandler(e)
+        }} action="">
           <h1 className='log-heading'>Log into Instagram</h1>
           <div className='email-input-container input-container'>
        
@@ -51,7 +71,9 @@ const Login = () => {
 
         </div>
 
-        <button className="submit">Log in</button>
+        <button
+       
+        className="submit">Log in</button>
 
         <h2 className='forgot-password'>Forgot password ?</h2>
 
@@ -60,7 +82,7 @@ const Login = () => {
            <Link>Log in with Facebook</Link>
          </div>
          <div>
-           <Link>Create new account</Link>
+           <Link to={"/register"}>Create new account</Link>
          </div>
 
 

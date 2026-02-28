@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { registerUser } from "../services/auth.api";
-import  { authContext } from "../context/AuthContext";
+import { loginUser, registerUser } from "../services/auth.api";
+import  { AuthContext } from "../context/AuthContext";
 
 
 
@@ -9,10 +9,10 @@ import  { authContext } from "../context/AuthContext";
 const useAuth = ()=>{
 
 
-    const {  loading , setLoading , setUser ,user} = useContext(authContext) 
+   const {loading , setLoading , user , setUser} =  useContext(AuthContext)
 
 
-    const registerHandler = async({email , password , userName})=>{
+    const registerHandler = async({email , password , userName, fullName})=>{
 
         
 
@@ -22,14 +22,12 @@ const useAuth = ()=>{
                 
                 // register user
 
-                const user = await registerUser({email , password , userName})
+                const response = await registerUser({email , password , userName , fullName})
 
                 // set value of user 
 
-                setUser(user.user)
+                setUser(response.user)
 
-                // loading false
-                setLoading(false)
 
                 
             } catch (error) {
@@ -44,13 +42,29 @@ const useAuth = ()=>{
 
 
 
+
+    }
+
+    const loginHandler = async({email  , password})=>{
+
+        try {
+            setLoading(true)
+            const response =  await loginUser({email , password}) ; 
+            setUser(response.user)
+            
+        } catch (error) {
+
+            console.log("cannot login user" , error)
+            
+        }finally{
+            setLoading(false)
+        }
     }
 
 
 
 
-    return {registerHandler , loading ,  user}
-
+    return {registerHandler ,loginHandler ,  loading ,  user};
       
 
 

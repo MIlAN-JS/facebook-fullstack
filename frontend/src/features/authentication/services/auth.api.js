@@ -1,34 +1,52 @@
 import axios from "axios"
 
-
 const api = axios.create({
-    baseURL : "http://localhost:3000/api/auth", 
+    baseURL : "http://localhost:3000/api/auth/", 
     withCredentials : true
 })
 
 
-
-const registerUser = async({email , password , userName})=>{
+const registerUser = async({userName , fullName , password , email })=>{
 
     try {
 
-        const user = await api.post("/register", {
-            email : email, 
-            password : password, 
-            userName: userName
+        const response = await api.post("/register", {
+            userName : userName, 
+            email : email ,
+            password : password , 
+            fullName : fullName
         })
 
-        return user.data
+        return response.data
         
     } catch (error) {
-
-        throw error; 
-        console.log("cannot register user ", error)
+        console.log("cannot register user" , error)
+        throw error
         
     }
 
+} 
+
+const loginUser = async({email , password})=>{
+    try {
+
+        const response =await api.post("/login", {email , password});
+        console.log(response)
+        return response.data
+        
+        
+    } catch (error) {
+
+        console.log("error found : cannot login user" , error)
+        
+    }
 }
 
+
+
 export {
-    registerUser
+
+    registerUser, 
+    loginUser
+
 }

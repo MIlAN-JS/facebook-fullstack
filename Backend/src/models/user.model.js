@@ -18,6 +18,12 @@ const userSchema = new mongoose.Schema({
         required: [true , "please provide email"],
         
     }, 
+    fullName:{
+
+        type: String,
+        required: [true, "please provide fullName"]
+
+    }, 
     imgLink : {
         type : String , 
         default : ""
