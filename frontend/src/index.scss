@@ -1,3 +1,17 @@
+@font-face {
+    font-family: insta-fontm;
+    src: url("../../../../public/fonts/Instagram\ Sans\ Medium.ttf");
+}
+@font-face {
+    font-family: insta-fontl;
+    src: url("../../../../public/fonts/Instagram\ Sans\ Light.ttf");
+}
+@font-face {
+    font-family: insta-font;
+    src: url("../../../../public/fonts/Instagram\ Sans.ttf");
+}
+
+
 *{
     margin: 0;
     padding: 0;
@@ -6,5 +20,9 @@
 html , body{
     height: 100%;
     width: 100%;
+    font-family: insta-font ;
 }
-    
+main{
+   width:100%;
+}
+
