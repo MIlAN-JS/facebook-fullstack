@@ -8,24 +8,33 @@ const Register = () => {
   const [email , setEmail] = useState('')
   const [password , setPassword] = useState('')
   const [userName , setUsername] = useState('')
-  const [name , setName ] = useState("")
+  const [fullName , setFullName ] = useState("")
 
   const {registerHandler , loading , user} =  useAuth()
 
   const navigate = useNavigate()
 
-  async function submitHandler(e){
-    e.preventDefault()
+  
 
-    await registerHandler({email, password ,userName})
+  const registerSubmitHandler = async(e)=>{
 
+    await registerHandler({fullName , userName , password , email})
+    setEmail("")
+    setPassword("")
+    setUsername("")
+    setFullName("")
+    navigate("/")
 
+    
   }
 
-  console.log(user)
+
+  if(loading) <h1>loading....</h1>
 
 
-  return (
+  return  (
+
+
     <div className='register-user-container'>
       
       <form >
@@ -60,6 +69,7 @@ const Register = () => {
         <h2> Mobile number or email address</h2>
         <input
         value={email}
+        required
         onChange={(e)=>{
           setEmail(e.target.value)
         }}
@@ -71,20 +81,20 @@ const Register = () => {
 
       <div className="password-input-container input-container">
         <h2>Password</h2>
-        <input type="text" placeholder='Enter Password' />
+        <input required type="text" placeholder='Enter Password' />
 
       </div>
 
 
       <div className="name-container input-container">
         <h2>Name</h2>
-        <input type="text" placeholder='Username' value={name}
-         onChange={(e)=>{setName(e.target.value)}} />
+        <input required type="text" placeholder='Enter Full Name' value={fullName}
+         onChange={(e)=>{setFullName(e.target.value)}} />
       </div>
 
       <div className="userName-container input-container">
         <h2>Username</h2>
-        <input type="text" placeholder='Username' value={userName}
+        <input required type="text" placeholder='Username' value={userName}
          onChange={(e)=>{setUsername(e.target.value)}} />
       </div>
 
@@ -96,7 +106,12 @@ const Register = () => {
 
 
         <div className="buttons">
-          <button className="submit">Submit</button>
+          <button 
+          onClick={(e)=>{
+            registerSubmitHandler(e)
+          }}
+          className="submit">Submit</button>
+
           <button onClick={()=>{
             navigate("/login")
           }} className="already-have-account">

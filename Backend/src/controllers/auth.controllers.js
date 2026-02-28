@@ -2,13 +2,14 @@ const userModel = require("../models/user.model")
 const bcrypt  = require('bcrypt')
 const jwt = require("jsonwebtoken")
 
+
 const registerUserController = async(req , res)=>{
 
     try {
 
         // fetching data
         console.log(req.body    )
-         const {userName , email , password , imgLink} = req.body
+         const {userName , email , password , imgLink , fullName} = req.body
          
          
          // checking if user already exists with same userName or email 
@@ -40,7 +41,7 @@ const registerUserController = async(req , res)=>{
 
 
          // Hashing password 
-         const hashedPassword = await bcrypt.hash(password , 10)
+         const hashedPassword = await bcrypt.hash(password.trim() , 10)
 
          // storing userData in database
 
@@ -48,7 +49,8 @@ const registerUserController = async(req , res)=>{
             email : email,
             userName : userName, 
             password : hashedPassword,
-            imgLink : imgLink
+            imgLink : imgLink,
+            fullName : fullName
          }) 
 
 
@@ -72,6 +74,7 @@ const registerUserController = async(req , res)=>{
             user : {
                 userName : userName, 
                 email : email , 
+                fullName : fullName 
                 
             }
          })
@@ -92,7 +95,76 @@ const registerUserController = async(req , res)=>{
 
 }
 
+const loginUserController = async(req , res)=>{
+    try {
+
+        // fetching userDAta
+
+        const {email , password} = req.body
+
+        // checking if user exists with email 
+
+        const user = await userModel.findOne({email});
+
+
+        console.log("user from db" , user)
+        console.log("pass" , user.password)
+        // return error if usernot exist
+        if (!user){
+            return res.status(400).json({
+                message : "user not found",
+                success : false
+            })
+        }
+
+        // check password if user exists
+
+
+        const isPassCorrect = await bcrypt.compare(password.trim() , user.password)
+
+        console.log("pass check " , isPassCorrect)
+
+        if(!isPassCorrect){
+            return res.status(400).json({
+                message : "invalid password"
+            })
+        }
+
+
+        const token = jwt.sign({
+            id : user._id, 
+            
+        } , process.env.JWT_SECRET , {expiresIn :"1d"})
+
+        res.cookie("token", token)
+ // sending response
+        res.status(200).json({
+            message : "login success", 
+            user : {
+                userName : user.userName, 
+                email : user.email , 
+                fullName : user.fullName 
+                
+            }
+        })
+
+
+        
+
+
+        
+    } catch (error) {
+
+        console.log("error found while login ", error)
+        return res.status(400).json({
+            message : "cannot login"
+        })
+        
+    }
+}
+
 
 module.exports = {
-    registerUserController
+    registerUserController, 
+    loginUserController
 }
