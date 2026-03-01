@@ -1,0 +1,110 @@
+section.feed{
+
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+    background-color:#0C1014 ;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+//    position: relative;
+
+    div.post-container{
+        display: flex;
+        justify-content: center;
+        border: 2px solid red;
+        .post{
+            width: 100%;
+            max-width: 38rem;
+            min-width: 20rem;
+            height: auto;
+
+            .user-dets{
+                padding: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                div{
+                    display: flex;
+                    align-items: center;
+                    gap: 0.8rem;
+                    img{
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                h3{
+                    font-size: 1.4rem;
+
+                }
+                }
+                i{
+                    font-size: 1.375rem;
+                   
+                    
+                    
+                }
+
+            }
+
+
+            .post-img-container{
+                height: 80%;
+                min-height: fit-content;
+                width: 100%;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+
+
+            }
+
+            .post-icons{
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+                padding: 0 2rem;
+                border: 2px solid blue;
+
+                i{
+                    font-size: 1.375rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.2rem;
+                     
+                }
+            }
+
+
+             .user-caption{
+                display: flex;
+                gap: 0.2rem;
+                align-items: center;padding: 0 2rem;
+                margin-top: 1rem;
+
+                h2{
+                    font-weight: 800;
+                    font-size: 1.2rem;
+                }
+                p{
+                    font-size: 1.2rem;
+                }
+             }
+        
+
+            
+            
+           
+        }
+    }
+    
+
+}

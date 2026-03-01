@@ -1,0 +1,24 @@
+
+nav.navbar{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.3rem;
+    z-index: 10;
+    position: fixed;
+    background-color: #0C1014;
+    align-items: center;
+
+    i svg{
+        width: 2rem;
+        height: 3rem;
+    }
+    i.user-profile img{
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+    }
+}

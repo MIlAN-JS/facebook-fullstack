@@ -53,6 +53,8 @@ const registerUserController = async(req , res)=>{
             fullName : fullName
          }) 
 
+         
+
 
          // creating and sending token to cookie
 
@@ -64,13 +66,14 @@ const registerUserController = async(req , res)=>{
 
          res.cookie("token", token)
 
-         
+            console.log()
 
          //sending response
 
          res.status(201).json({
             message : "user creation success",
-            success : true, 
+            success : true,
+            token : token , 
             user : {
                 userName : userName, 
                 email : email , 
@@ -103,12 +106,11 @@ const loginUserController = async(req , res)=>{
         const {email , password} = req.body
 
         // checking if user exists with email 
+        console.log(password)
 
         const user = await userModel.findOne({email});
 
 
-        console.log("user from db" , user)
-        console.log("pass" , user.password)
         // return error if usernot exist
         if (!user){
             return res.status(400).json({
