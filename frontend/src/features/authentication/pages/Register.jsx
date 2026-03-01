@@ -18,12 +18,18 @@ const Register = () => {
 
   const registerSubmitHandler = async(e)=>{
 
-    await registerHandler({fullName , userName , password , email})
+    e.preventDefault()
+
+    const res = await registerHandler({fullName , userName , password , email})
+    
     setEmail("")
     setPassword("")
     setUsername("")
     setFullName("")
-    navigate("/")
+    navigate("/feed")
+
+    console.log(res)
+
 
     
   }

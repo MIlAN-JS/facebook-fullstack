@@ -5,8 +5,10 @@ import { Link, useNavigate } from 'react-router'
 import "../styles/login.scss"
 import useAuth from '../hooks/useAuth'
 
-const Login = () => {
+const Login = (e) => {
 
+
+  e.preventDefault()
 
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
@@ -22,13 +24,9 @@ const Login = () => {
   
   }
 
-
-
- 
-
-
+  
   return (
-    <section>
+    <section className='login-page'>
 
       <div className="header-info">
         <div className="insta-logo">
