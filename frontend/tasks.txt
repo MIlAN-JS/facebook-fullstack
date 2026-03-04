@@ -1,0 +1,5 @@
+Date : 5 sep / 2026
+Todo:X 
+
+1. Implementation authorisation (public and private routes)
+2. Logout user and Token blacklisting using reddis

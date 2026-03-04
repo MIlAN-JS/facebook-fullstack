@@ -5,98 +5,235 @@ section.create-window-container{
      top: 50%;
      transform: translate(-50% ,-50%);
      padding: 1rem;
-     background-color: rgb(149, 149, 149);
+     background-color: #1B1F23;
     border-radius: 0.5rem;
     max-width: 30rem;
     width: 100%;
     min-width: 20rem;
+    height: auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 
-    .cancel{
+    .postwindow-userinfo{
         display: flex;
         align-items: center;
-        
-        justify-content: center;
-        position: absolute;
-        top: 0;
-        right: 1.2rem;
-        font-size: 1.5rem;
-        color: rgb(177, 27, 27);
-        font-weight: 800;
-        cursor: pointer;
-        padding: 0.8rem;
-        border-radius: 50%;
+        gap: 0.5rem;
+
+          img{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+          }
+
+          div{
+            h1{
+                font-size: 1.4rem;
+                font-weight: 800;
+            }
+          }
 
     }
 
-     form.create-post{
+    .caption{
+        height: 25rem;
+        
+        width: 100%;
+        
+            textarea {
+        width: 100%;
+        height: 100%;
+        border: none;
+        resize: none;
+        outline: none;
+        font-size: 1.4rem;
+        font-family: inherit;
+        margin-top: 0.4rem;
+        padding: 10px;
        
+        background-color: transparent;
+        color: white;
+        &::placeholder{
+            color: #C7C7C7;
+            font-size: 1.4rem;
+        }
+        }
+
+
+
+    }
+
+    .emoji-window{
+        position: absolute;
+       top: 60%;
+       left: -50%;
+       transform: translate(50% , -50%);
+    }
+
+    i.Emoji{
+
         display: flex;
-        padding: 1rem;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
-        text-align: center;
-        gap: 0.5rem;
+        font-size: 1.6rem;
+        background-color: transparent;
+        width: fit-content;
+        padding: 0.5rem ;
+        border-radius: 50%;
+        &:hover{
+           background-color: #4c4949;
+        }
+
+
+    }
+
+    .btns{
+        display: flex;
+        margin-top: 0.6rem;
+       position: relative;
+      
+                    border-bottom: 1px solid gray ;
+       
+                   input{
+                    display: none;
+                   }
+                    
+            label{
+            font-size: 1.6rem;
+             padding: 0.5rem;
+             transition: all ease-in-out 0.3s;
+           
+               &:hover small{
+                opacity: 1;
+                visibility: visible;
+             }
+
+            }
+
+              small{
+                position: absolute;
+                font-size: 0.8rem;
+                font-weight: 500;
+                border: 1px solid gray;
+                top: -40%;
+                padding: 0.2rem;
+                left: 0%;
+                text-wrap: nowrap;
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.2 ease;
+             }
+
+
+             }
+       
+          
+
+           .post-btn{
+            padding-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            button{
+                font-size: 1.2rem;
+
+                padding: 0.5rem 1rem;
+                border-radius: 1.2rem;
+                border: none;
+
+            }
+           } 
+             
+
+      
+         
+
+        }
+    
+    
+
+//     .cancel{
+//         display: flex;
+//         align-items: center;
+        
+//         justify-content: center;
+//         position: absolute;
+//         top: 0;
+//         right: 1.2rem;
+//         font-size: 1.5rem;
+//         color: rgb(177, 27, 27);
+//         font-weight: 800;
+//         cursor: pointer;
+//         padding: 0.8rem;
+//         border-radius: 50%;
+
+//     }
+
+//      form.create-post{
+       
+//         display: flex;
+//         padding: 1rem;
+//         align-items: center;
+//         justify-content: center;
+//         flex-direction: column;
+//         text-align: center;
+//         gap: 0.5rem;
         
 
 
-        .file-container{
+//         .file-container{
 
-            padding: 0.8rem;
-            width: 100%;
-            background-color: #0C1014;
-              border-radius: 0.5rem;
-            label{
-                font-size: 1.5rem;
+//             padding: 0.8rem;
+//             width: 100%;
+//             background-color: #0C1014;
+//               border-radius: 0.5rem;
+//             label{
+//                 font-size: 1.5rem;
               
                 
                 
-            }
-            input{
-                display: none;
+//             }
+//             input{
+//                 display: none;
                
-            }
+//             }
 
             
-        }
+//         }
 
-        .caption{
-                padding: 0.8rem;
-                font-size: 1.2rem;
-                outline: none;
-                border: none;
-                 border-radius: 0.4rem;
-                 background-color: #0C1014;
-                 color: white;
-                 width: 100%;
+//         .caption{
+//                 padding: 0.8rem;
+//                 font-size: 1.2rem;
+//                 outline: none;
+//                 border: none;
+//                  border-radius: 0.4rem;
+//                  background-color: #0C1014;
+//                  color: white;
+//                  width: 100%;
                    
 
-                 &::placeholder{
-                    color: white;
-                    text-align: center;
-                 }
+//                  &::placeholder{
+//                     color: white;
+//                     text-align: center;
+//                  }
 
 
 
                 
-            }
+//             }
 
-            .create{
-                width: fit-content;
-                padding: 0.4rem 0.8rem;
-                font-size: 1.3rem;
-                border: none;
-                color: white;
-                background-color: rgb(13, 78, 13);
-                  border-radius: 0.4rem;
-                  width: 100%;
+//             .create{
+//                 width: fit-content;
+//                 padding: 0.4rem 0.8rem;
+//                 font-size: 1.3rem;
+//                 border: none;
+//                 color: white;
+//                 background-color: rgb(13, 78, 13);
+//                   border-radius: 0.4rem;
+//                   width: 100%;
               
-            }
+//             }
 
-     }
+//      }
 
-}
+// }
 

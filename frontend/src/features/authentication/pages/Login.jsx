@@ -7,8 +7,7 @@ import useAuth from '../hooks/useAuth'
 
 const Login = (e) => {
 
-
-  e.preventDefault()
+  e.preventDefault
 
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
@@ -20,7 +19,7 @@ const Login = (e) => {
     e.preventDefault()
 
     await loginHandler({email ,password})
-    navigate("/")
+    navigate("/feed")
   
   }
 

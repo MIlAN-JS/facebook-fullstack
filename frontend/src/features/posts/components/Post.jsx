@@ -3,20 +3,25 @@ import { FcLike } from "react-icons/fc";
 import { FaComment } from "react-icons/fa";
 import { FaShare } from "react-icons/fa6";
 import { HiDotsHorizontal } from "react-icons/hi";
+import usePost from '../hooks/usePost';
 
 
 const Post = () => {
+  const {posts , loading} = usePost()
+  console.log("posts", posts)
   return (
     <div className="post-container">
 
    
-    <div className='post'>
+  {
+    posts.map((post)=>{
+      return  <div className='post'>
          
          <div className="user-dets">
              <div>
-               <img  src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='user-img' alt="" />
+               <img  src={`${post.user.imgLink}`} className='user-img' alt="" />
 
-                <h3>username</h3>
+                <h3>{post.user.fullName}</h3>
              </div>
 
              <i><HiDotsHorizontal /></i>
@@ -24,7 +29,7 @@ const Post = () => {
          </div>
 
         <div className='post-img-container'>
-           <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='post-img' alt="" />
+           <img src={`${post.postImg}`} className='post-img' alt="" />
 
         </div>
 
@@ -36,11 +41,14 @@ const Post = () => {
          </div>
 
         <div className='user-caption'>
-          <h2 className="caption">username</h2>
-          <p>caption</p>
+          <h2 className="caption">{post.user.userName}</h2>
+          <p>{post.caption}</p>
         </div>
 
     </div>
+})
+  }
+
      </div>
   )
 }
