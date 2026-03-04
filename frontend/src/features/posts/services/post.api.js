@@ -28,7 +28,20 @@ const createPost = async({caption , postImg })=>{
     }
 }
 
+const getFeed = async()=>{
+    try {
+        const response = await api.get("/get-feed")
+        return response.data
+    } catch (error) {
+
+        console.log(error, "cannot get feed")
+        
+    }
+}
+
+
 
 export {
-    createPost
+    createPost, 
+    getFeed
 }

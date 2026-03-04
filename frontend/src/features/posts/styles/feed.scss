@@ -9,18 +9,22 @@ section.feed{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 4rem;
+    
 //    position: relative;
 
     div.post-container{
         display: flex;
         justify-content: center;
-        border: 2px solid red;
+        flex-direction: column;
+        gap: 2rem;
+       
         .post{
             width: 100%;
-            max-width: 38rem;
+            max-width: 25rem;
             min-width: 20rem;
             height: auto;
-
+ border: 2px solid red;
             .user-dets{
                 padding: 1rem;
                 display: flex;

@@ -42,11 +42,26 @@ const loginUser = async({email , password})=>{
     }
 }
 
+const getUser = async()=>{
+    try {
+
+        const user = await api.get("/get-user")
+            return user.data
+        
+        
+    } catch (error) {
+
+        console.log("cannot get user", error)
+        
+    }
+}
+
 
 
 export {
 
     registerUser, 
-    loginUser
+    loginUser, 
+    getUser
 
 }
