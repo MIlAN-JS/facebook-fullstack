@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken")
+const redis = require("../config/cache")
 
 
 const checkUser = async(req , res , next)=>{
@@ -10,6 +11,17 @@ const checkUser = async(req , res , next)=>{
             message : "unauthorized user ", 
             success : false
         })    }
+
+
+        //checking if token is blacklisted 
+
+        const blacklistedToken = await redis.get(token)
+
+        if(blacklistedToken){
+            return res.status(401).json({
+                message : "Invalid credentials (blacklisted token)"
+            })
+        }
 
     
         //verify the token 

@@ -57,8 +57,33 @@ const createPostController = async(req , res)=>{
 
 }
 
+const getFeedController = async(req , res)=>{
 
+    try {
+
+        const user = req.userId
+        
+        const posts = await postModel.find({}).populate("user")
+
+        res.status(200).json({
+            message : "posts found ", 
+            posts : posts
+        })
+
+
+        
+        
+    } catch (error) {
+        res.status(400).json({
+            message : "cannot get post", 
+             error
+        })
+        
+    }
+
+}
 
 module.exports = {
-    createPostController
+    createPostController,
+    getFeedController
 }

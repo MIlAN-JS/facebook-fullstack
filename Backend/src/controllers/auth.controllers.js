@@ -1,7 +1,7 @@
 const userModel = require("../models/user.model")
 const bcrypt  = require('bcrypt')
 const jwt = require("jsonwebtoken")
-
+const redis = require("../config/cache")
 
 const registerUserController = async(req , res)=>{
 
@@ -164,9 +164,86 @@ const loginUserController = async(req , res)=>{
         
     }
 }
+const getUserController = async(req , res)=>{
+    try {
+
+
+        const userId = req.userId
+        
+        console.log(userId)
+
+
+        const user = await userModel.findById(userId)
+      
+        
+
+        res.status(200).json({
+            message : "user fetched", 
+            user : {
+                userName : user.userName, 
+                email : user.email , 
+                fullName : user.fullName ,
+                userImg : user.imgLink
+                
+            }
+        })
+
+
+        
+
+
+        
+    } catch (error) {
+
+        console.log("error found while getting user ", error)
+        return res.status(400).json({
+            message : "cannot get user"
+        })
+        
+    }
+}
+
+const logoutUserController = async(req , res)=>{
+    try {
+        const token  = req.cookies.token
+
+
+// clear the cookie
+        res.clearCookie("token")
+
+        //blacklist the token
+
+        const blacklistToken = await redis.set(token , Date.now().toString() , "EX", 60 * 60)
+
+        
+
+
+ // sending response
+        res.status(200).json({
+            message : "logout success", 
+            
+        })
+
+
+        
+
+
+        
+    } catch (error) {
+
+        console.log("error found while logout ", error)
+        return res.status(400).json({
+            message : "cannot logout"
+        })
+        
+    }
+}
 
 
 module.exports = {
     registerUserController, 
-    loginUserController
+    loginUserController,
+    getUserController,
+    logoutUserController
+
 }

@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     }, 
     imgLink : {
         type : String , 
-        default : ""
+        default : "https://ik.imagekit.io/cdra10tdme/Ipost-imgs/profile%20picture.jpg"
     }
 
     

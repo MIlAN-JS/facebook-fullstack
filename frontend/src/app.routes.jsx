@@ -4,6 +4,8 @@ import App from "./App"
 import Login from "./features/authentication/pages/Login"
 import Register from "./features/authentication/pages/Register"
 import Feed from "./features/posts/pages/Feed"
+import Protected from "./features/authentication/components/Protected"
+import Public from "./features/authentication/components/Public"
 
 const router = createBrowserRouter([
     {
@@ -16,7 +18,7 @@ const router = createBrowserRouter([
             }, 
             {
                 path : '/register', 
-                element : <Register/>
+                element :<Public> <Register/></Public>
             },
            
 
@@ -24,7 +26,7 @@ const router = createBrowserRouter([
     },
      {
                 path:"/feed",
-                element : <Feed/>
+                element :<Protected> <Feed/></Protected>
      }
 ])
 
