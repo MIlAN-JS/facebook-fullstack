@@ -55,6 +55,19 @@ const getUser = async()=>{
         
     }
 }
+const logoutUser = async()=>{
+    try {
+
+        const logout = await api.post("/logout")
+            return user.data
+        
+        
+    } catch (error) {
+
+        console.log("cannot logout user", error)
+        
+    }
+}
 
 
 
@@ -62,6 +75,7 @@ export {
 
     registerUser, 
     loginUser, 
-    getUser
+    getUser,
+    logoutUser
 
 }

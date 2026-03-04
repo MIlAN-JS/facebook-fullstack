@@ -1,13 +1,20 @@
 import React, { useContext } from 'react'
 import "./nav.scss"
 import { PostContext } from '../../features/posts/context/PostContext'
+import useAuth from '../../features/authentication/hooks/useAuth'
+import {useNavigate } from "react-router-dom"
 const Navbar = () => {
 
     const { addClicked , setAddClicked} = useContext(PostContext)
-
-
+    const {logoutHandler } = useAuth()
+    const navigate = useNavigate()
 console.log(addClicked)
-    
+
+const handleLogoutUser =()=>{
+        logoutHandler()
+        navigate("/login")
+
+}    
 
 
 
@@ -43,7 +50,7 @@ console.log(addClicked)
         </i>
 
         <button  
-        
+        onClick={handleLogoutUser}
         >LOGOUT</button>
     </nav>
 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { loginUser, registerUser } from "../services/auth.api";
+import { loginUser, logoutUser, registerUser } from "../services/auth.api";
 import  { AuthContext } from "../context/AuthContext";
 
 
@@ -61,10 +61,24 @@ const useAuth = ()=>{
         }
     }
 
+    const logoutHandler = async()=>{
+        try {
+
+        const response = await logoutUser();
+        setUser(null)
+        
+
+
+            
+        } catch (error) {
+            console.log("cannot logout user", error)
+            
+        }
+    }
 
 
 
-    return {registerHandler ,loginHandler ,  loading ,  user};
+    return {registerHandler ,loginHandler ,  loading ,  user ,logoutHandler};
       
 
 
