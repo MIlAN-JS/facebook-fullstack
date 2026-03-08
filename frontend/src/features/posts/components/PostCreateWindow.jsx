@@ -7,7 +7,7 @@ import useAuth from '../../authentication/hooks/useAuth';
 import { GrEmoji } from "react-icons/gr";
 import EmojiPicker from "emoji-picker-react"
 import { MdImage } from "react-icons/md";
-
+import {createPortal} from "react-dom"
 
 const PostCreateWindow = () => {
 
@@ -44,35 +44,15 @@ const PostCreateWindow = () => {
        
 
 
-  return (
-   <section className="create-window-container">
+ 
+    return createPortal(
+             <section className='create-window-wrapper'>
 
-    {/* <i onClick={()=>setAddClicked(false)} className='cancel'>X</i>
+<div className='backdrop'></div>
+   
+   <div className="create-window-container">
 
-        <form
-        onSubmit={handleSubmit}
-        action="" className="create-post  ">
-
-<div className="file-container">
-    
-            <label htmlFor="postImg">Select image</label>
-            <input
-            ref={postImgInputRef}
-            type="file" className='file-input' src="" id='postImg' name='postImg' alt="" />
-</div>
-            <input
-           onChange={(e)=>{
-            setCaption(e.target.value)
-
-           }} 
-           value={caption}
-            type="text" name="" id="" placeholder='Caption' className='caption' />
-
-        <button type='submit' className="create">
-            Create
-        </button>
-        </form> */}
-
+     
        <form onSubmit={handleSubmit}>
          <div className="postwindow-userinfo">   
              <img src={user.userImg} className='user-profile'  alt="" />
@@ -132,8 +112,15 @@ const PostCreateWindow = () => {
 
        </form>
 
-   </section>
-  )
+   </div>
+
+    </section>, 
+    document.body // here this component is injected directly
+    )
+
+    
+   
+  
 }
 
 export default PostCreateWindow

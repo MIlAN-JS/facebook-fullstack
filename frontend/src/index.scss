@@ -16,11 +16,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
-html , body{
+
+
+ html , body{
     height: 100%;
     width: 100%;
     font-family: insta-font ;
+    position: relative;
+    
+    &.window-open{
+        
+       &.webkit-scrollbar{
+        display:hidden;
+       }
+    }
 }
 main{
    width:100%;

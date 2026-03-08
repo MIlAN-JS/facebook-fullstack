@@ -11,10 +11,16 @@ nav.navbar{
     position: fixed;
     background-color: #0C1014;
     align-items: center;
+  
 
     i svg{
         width: 2rem;
         height: 3rem;
+        
+    }
+   
+    i.insta-logo , .menu , .blocks, .search{
+        display: none;
     }
     i.user-profile img{
         border-radius: 50%;

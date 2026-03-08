@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import Post from '../components/post'
+import Post from '../components/Post'
 import "../styles/feed.scss"
 import Navbar from '../../../components/Navbar/Navbar'
 import PostCreateWindow from '../components/PostCreateWindow'
@@ -12,32 +12,49 @@ const Feed = () => {
 
 
   
-const {handleGetFeed , posts} = usePost()
+const {handleGetFeed , posts } = usePost()
+const {addClicked} = useContext(PostContext)
+
   useEffect(()=>{
 
     handleGetFeed()
    
   },[])
 
-  const {addClicked} = useContext(PostContext)
+  useEffect(()=>{
+
+    document.body.classList.toggle("window-open", addClicked)
+
+  }, [addClicked])
+
+
+
+
+  
 
   return (
-    <section className='feed'>
+
+   
+      <section className = {`feed ${addClicked ? "no-scroll" : "bg-black"}`}>
+
+     
+      
+      {
+     posts.length == 0 ? <h1>Create post</h1> : 
+        <Post/>
+      }
 
       {
         addClicked&& ( <PostCreateWindow    />)
       }
 
-      
-      {
-     posts.length == 0 ? <h1>Create post</h1> : 
-          <Post
-         
-         /> 
-      }
+
        
          <Navbar/>
     </section>
+     
+     
+
   )
 }
 

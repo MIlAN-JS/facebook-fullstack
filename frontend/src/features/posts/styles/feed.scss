@@ -1,15 +1,19 @@
-section.feed{
-
+section.feed  {
+   
     min-height: 100vh;
     height: auto;
     width: 100%;
     margin: 0 auto;
-    background-color:#0C1014 ;
+    background:#0C1014 ;
     color: white;
-    display: flex;
+    display: flex;  
     align-items: center;
     justify-content: center;
     padding-bottom: 4rem;
+    
+
+   
+
     
 //    position: relative;
 
@@ -19,96 +23,121 @@ section.feed{
         flex-direction: column;
         gap: 2rem;
        
-        .post{
-            width: 100%;
-            max-width: 25rem;
-            min-width: 20rem;
-            height: auto;
- border: 2px solid red;
-            .user-dets{
-                padding: 1rem;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+//         .post{
+//             width: 100%;
+//             max-width: 25rem;
+//             min-width: 20rem;
+//             height: auto;
+//  border: 2px solid red;
+//             .user-dets{
+//                 padding: 1rem;
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: space-between;
 
-                div{
-                    display: flex;
-                    align-items: center;
-                    gap: 0.8rem;
-                    img{
-                    width: 2rem;
-                    height: 2rem;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-                h3{
-                    font-size: 1.4rem;
+//                 div{
+//                     display: flex;
+//                     align-items: center;
+//                     gap: 0.8rem;
+//                     img{
+//                     width: 2rem;
+//                     height: 2rem;
+//                     border-radius: 50%;
+//                     object-fit: cover;
+//                 }
+//                 h3{
+//                     font-size: 1.4rem;
 
-                }
-                }
-                i{
-                    font-size: 1.375rem;
+//                 }
+//                 }
+//                 i{
+//                     font-size: 1.375rem;
                    
                     
                     
-                }
+//                 }
 
-            }
-
-
-            .post-img-container{
-                height: 80%;
-                min-height: fit-content;
-                width: 100%;
-
-                img{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
+//             }
 
 
+//             .post-img-container{
+//                 height: 80%;
+//                 min-height: fit-content;
+//                 width: 100%;
 
-            }
+//                 img{
+//                     width: 100%;
+//                     height: 100%;
+//                     object-fit: cover;
+//                 }
 
-            .post-icons{
-                display: flex;
-                gap: 2rem;
-                align-items: center;
-                padding: 0 2rem;
-                border: 2px solid blue;
 
-                i{
-                    font-size: 1.375rem;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.2rem;
+
+//             }
+
+//             .post-icons{
+//                 display: flex;
+//                 gap: 2rem;
+//                 align-items: center;
+//                 padding: 0 2rem;
+//                 border: 2px solid blue;
+
+//                 i{
+//                     font-size: 1.375rem;
+//                     display: flex;
+//                     align-items: center;
+//                     gap: 0.2rem;
                      
-                }
-            }
+//                 }
+//             }
 
 
-             .user-caption{
-                display: flex;
-                gap: 0.2rem;
-                align-items: center;padding: 0 2rem;
-                margin-top: 1rem;
+//              .user-caption{
+//                 display: flex;
+//                 gap: 0.2rem;
+//                 align-items: center;padding: 0 2rem;
+//                 margin-top: 1rem;
 
-                h2{
-                    font-weight: 800;
-                    font-size: 1.2rem;
-                }
-                p{
-                    font-size: 1.2rem;
-                }
-             }
+//                 h2{
+//                     font-weight: 800;
+//                     font-size: 1.2rem;
+//                 }
+//                 p{
+//                     font-size: 1.2rem;
+//                 }
+//              }
         
 
             
             
            
-        }
+//         }
+
+
     }
     
 
+}
+
+@media (min-width: 770px) {
+    section.feed{
+        
+          nav.navbar{
+            top: 0;
+           left : 0;
+            bottom: 0;
+            flex-direction: column;
+            width: fit-content;
+            padding: 1.5rem;
+            justify-content: space-between;
+            
+            
+            i.insta-logo , .menu , .blocks , .search{
+              display: block;
+           }
+
+
+          }
+    }
+    
 }
