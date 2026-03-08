@@ -8,7 +8,7 @@ const registerUserController = async(req , res)=>{
     try {
 
         // fetching data
-        console.log(req.body    )
+        console.log(req.body )
          const {userName , email , password , imgLink , fullName} = req.body
          
          
@@ -22,6 +22,8 @@ const registerUserController = async(req , res)=>{
                 
             
          })
+
+         console.log("hello world" , isUserExist)  // this line is not printing
 
          if(isUserExist){
             if(isUserExist.email === email ){
@@ -66,7 +68,7 @@ const registerUserController = async(req , res)=>{
 
          res.cookie("token", token)
 
-            console.log()
+            
 
          //sending response
 
@@ -104,12 +106,11 @@ const loginUserController = async(req , res)=>{
         // fetching userDAta
 
         const {email , password} = req.body
-
+        console.log(email , password)
         // checking if user exists with email 
         console.log(password)
 
         const user = await userModel.findOne({email});
-
 
         // return error if usernot exist
         if (!user){

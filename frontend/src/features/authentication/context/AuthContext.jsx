@@ -16,9 +16,18 @@ const AuthProvider = ({children})=>{
     useEffect(()=>{
 
         const getUserInfo = async ()=>{
-            const user =  await getUser()
+            try{
+                const user =  await getUser()
             setUser(user.user)
-            setLoading(false)
+            }
+            catch(err){
+                console.log("no user", err)
+            }
+            finally{
+                setLoading(false)
+            }
+            
+            
         }
 
         getUserInfo()

@@ -6,10 +6,13 @@ const Public = ({children}) => {
 
     const {user , loading} =  useAuth()
 
+    console.log(user)
+
     if(loading){
-        <h1>Loading...</h1>
+       return <h1>Loading...</h1>
     }
 
+    
     if(user){
         return <Navigate to={"/feed"} />
     }
