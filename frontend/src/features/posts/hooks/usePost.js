@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { createPost, getFeed, likePost } from "../services/post.api"
+import { commentPost, createPost, getFeed, likePost } from "../services/post.api"
 import { PostContext } from "../context/PostContext"
 
 
@@ -55,12 +55,26 @@ const usePost = ()=>{
         }
     }
 
+    const handleComment = async({postId , comment})=>{
+        try {
+            setLoading(true)
+            const response = await commentPost({postId , comment});
+            
+        } catch (error) {
+            
+            console.log(" cannot comment", error)
+        }finally{
+            setLoading(false)
+        }
+    }
+
     return {
         handleCreatePost,
         loading , 
         posts , 
         handleGetFeed, 
-        handleLike
+        handleLike, 
+        handleComment
         
 
     }

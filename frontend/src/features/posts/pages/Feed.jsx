@@ -6,6 +6,7 @@ import PostCreateWindow from '../components/PostCreateWindow'
 import { PostContext } from '../context/PostContext'
 import usePost from '../hooks/usePost'
 import {Atom} from "react-loading-indicators"
+import CommentWindow from '../components/CommentWindow'
 
 
 const Feed = () => {
@@ -13,7 +14,7 @@ const Feed = () => {
 
   
 const {handleGetFeed , posts,loading } = usePost()
-const {addClicked} = useContext(PostContext)
+const {addClicked , commentClicked} = useContext(PostContext)
 
   useEffect(()=>{
 
@@ -47,6 +48,9 @@ const {addClicked} = useContext(PostContext)
 
       {
         addClicked&& ( <PostCreateWindow    />)
+      }
+      {
+        `commentClicked && (<CommentWindow/>)`
       }
 
     

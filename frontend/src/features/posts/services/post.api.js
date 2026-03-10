@@ -49,8 +49,20 @@ const likePost = async(postId)=>{
     }
 }
 
+const commentPost = async({postId, comment})=>{
+    try {
+
+        const response = await api.post(`/comment/${postId}`, {comment});
+        return response.data
+        
+    } catch (error) {
+        console.log("cannot comment", error)
+    }
+}
+
 export {
     createPost, 
     getFeed,
-    likePost
+    likePost, 
+    commentPost
 }

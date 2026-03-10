@@ -1,4 +1,5 @@
 
+const commentModel = require('../models/comment.model');
 const likeModel = require('../models/like.model');
 const postModel = require('../models/post.model');
 const imageKit = require("imagekit")
@@ -70,12 +71,15 @@ const getFeedController = async(req , res)=>{
         .populate("likesCount")
         .lean()
 
-        const postsWithLike = await Promise.all (posts.map(async(post)=>{
+        const updatedPost = await Promise.all (posts.map(async(post)=>{
             const isLiked = await likeModel.findOne({post : post._id , user : user })
+            const isComment = await commentModel.find({post : post._id , user : user})
             if(isLiked){
                 post.liked = true
+                post.comments = isComment
             }else{
                 post.liked = false
+                post.comments = isComment
             }
 
             return post;
@@ -89,7 +93,7 @@ const getFeedController = async(req , res)=>{
 
         res.status(200).json({
             message : "posts found ", 
-            posts : postsWithLike
+            posts : updatedPost
         })
 
 
