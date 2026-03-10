@@ -6,8 +6,7 @@ const App = () => {
   return (
     <main className=''>
       
-        <Outlet/>
-        <Footer/>
+        
 
     </main>
   )

@@ -110,7 +110,7 @@ const loginUserController = async(req , res)=>{
         // checking if user exists with email 
         console.log(password)
 
-        const user = await userModel.findOne({email});
+        const user = await userModel.findOne({email}).select("+password");
 
         // return error if usernot exist
         if (!user){

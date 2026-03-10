@@ -18,13 +18,19 @@ const postSchema = new mongoose.Schema({
     }
 
     
-}, {timestamps : true})
+},{
+    toJSON : {virtuals: true}, 
+    timestamps : true
+})
+
+postSchema.virtual("likesCount" , {
+    ref : "like",
+    localField : "_id",
+    foreignField : "post",
+    count : true
+})
 
 
 const postModel = mongoose.model("post",postSchema )
 
-
-// postSchema.index({caption : 1} );
-
-
-module.exports = postModel  
+module.exports = postModel;  

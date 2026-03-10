@@ -44,15 +44,25 @@ const PostCreateWindow = () => {
        
 
 
+       
  
-    return createPortal(
+     return  createPortal(
              <section className='create-window-wrapper'>
+                  
 
-<div className='backdrop'></div>
+<div className='backdrop'>
+    <i
+    onClick={()=>{
+        setAddClicked(prev=> !prev)
+    }}
+    className='close'><svg aria-label="Close" class="x1lliihq x1n2onr6 x9bdzbf" fill="currentColor" height="18" role="img" viewBox="0 0 24 24" width="18"><title>Close</title><polyline fill="none" points="20.643 3.357 12 12 3.353 20.647" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" x1="20.649" x2="3.354" y1="20.649" y2="3.354"></line></svg></i>
+</div>
+
    
    <div className="create-window-container">
 
-     
+      
+        
        <form onSubmit={handleSubmit}>
          <div className="postwindow-userinfo">   
              <img src={user.userImg} className='user-profile'  alt="" />
@@ -97,11 +107,12 @@ const PostCreateWindow = () => {
         <div className="btns">
          
                 <label for="select-img" name="postImg">  <MdImage /></label>
+                
                 <input
                 
                 ref={imgInputRef}
                 name='postImg' type="file"id='select-img' />
-                <small>Add media</small>
+                {/* <small>Add media</small> */}
             
            
         </div>

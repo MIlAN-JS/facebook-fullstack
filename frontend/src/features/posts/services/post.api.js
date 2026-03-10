@@ -39,9 +39,18 @@ const getFeed = async()=>{
     }
 }
 
-
+const likePost = async(postId)=>{
+    try {
+        const response = await api.post("/like", {postId : postId})
+        console.log(response.data)
+        
+    } catch (error) {
+         console.log("cannot handle like  ", error)
+    }
+}
 
 export {
     createPost, 
-    getFeed
+    getFeed,
+    likePost
 }

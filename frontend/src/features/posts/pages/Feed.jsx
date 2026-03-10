@@ -5,14 +5,14 @@ import Navbar from '../../../components/Navbar/Navbar'
 import PostCreateWindow from '../components/PostCreateWindow'
 import { PostContext } from '../context/PostContext'
 import usePost from '../hooks/usePost'
-
+import {Atom} from "react-loading-indicators"
 
 
 const Feed = () => {
 
 
   
-const {handleGetFeed , posts } = usePost()
+const {handleGetFeed , posts,loading } = usePost()
 const {addClicked} = useContext(PostContext)
 
   useEffect(()=>{
@@ -35,7 +35,8 @@ const {addClicked} = useContext(PostContext)
   return (
 
    
-      <section className = {`feed ${addClicked ? "no-scroll" : "bg-black"}`}>
+    
+   loading ?  <div className='loading-compo'>  <Atom color="#0b1e0b" size="large" text="" textColor="#837171" /></div>   : <section className = {`feed ${addClicked ? "no-scroll" : "bg-black"}`}>
 
      
       
@@ -48,7 +49,7 @@ const {addClicked} = useContext(PostContext)
         addClicked&& ( <PostCreateWindow    />)
       }
 
-
+    
        
          <Navbar/>
     </section>

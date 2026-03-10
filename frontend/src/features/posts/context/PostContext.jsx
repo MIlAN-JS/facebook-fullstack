@@ -12,7 +12,8 @@ const PostContextProvider = ({children})=>{
     const [posts , setPosts] = useState([])
     const [addClicked , setAddClicked] = useState(false)
     const [emojiClicked , setEmojiClicked] = useState(false)
-
+    
+   
 
     return(
         <PostContext.Provider value={{loading , setLoading , posts , setPosts , addClicked ,setAddClicked  , emojiClicked , setEmojiClicked}}>

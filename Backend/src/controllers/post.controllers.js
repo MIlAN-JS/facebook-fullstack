@@ -1,4 +1,5 @@
 
+const likeModel = require('../models/like.model');
 const postModel = require('../models/post.model');
 const imageKit = require("imagekit")
 
@@ -63,11 +64,32 @@ const getFeedController = async(req , res)=>{
 
         const user = req.userId
         
-        const posts = await postModel.find({}).populate("user")
+        const posts = await postModel
+        .find({})
+        .populate("user")
+        .populate("likesCount")
+        .lean()
+
+        const postsWithLike = await Promise.all (posts.map(async(post)=>{
+            const isLiked = await likeModel.findOne({post : post._id , user : user })
+            if(isLiked){
+                post.liked = true
+            }else{
+                post.liked = false
+            }
+
+            return post;
+
+        }))
+
+        
+
+        
+        
 
         res.status(200).json({
             message : "posts found ", 
-            posts : posts
+            posts : postsWithLike
         })
 
 
@@ -78,6 +100,34 @@ const getFeedController = async(req , res)=>{
             message : "cannot get post", 
              error
         })
+
+        console.log("cannot get post", error)
+        
+    }
+
+}
+
+const deletePostController = async(req , res)=>{
+
+    try {
+
+        const postId = req.params.postId
+        
+          const post = postMode.find(postId)
+          console.log(post)
+
+        // const res = postModel.findByIdAndDelete(postId)
+
+
+        
+    } catch (error) {
+
+        res.status(400).json({
+            message : "cannot delete user"
+
+        })
+
+        console.log("cannot delete post", error)
         
     }
 
@@ -85,5 +135,6 @@ const getFeedController = async(req , res)=>{
 
 module.exports = {
     createPostController,
-    getFeedController
+    getFeedController,
+    deletePostController
 }

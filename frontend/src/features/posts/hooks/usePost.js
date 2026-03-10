@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { createPost, getFeed } from "../services/post.api"
+import { createPost, getFeed, likePost } from "../services/post.api"
 import { PostContext } from "../context/PostContext"
 
 
@@ -42,11 +42,25 @@ const usePost = ()=>{
         }
     }
 
+    const handleLike = async(postId)=>{
+
+        try {
+
+         const res = await likePost(postId)
+         console.log(res)
+
+            
+        } catch (error) {
+            console.log("cannot like post", error)
+        }
+    }
+
     return {
         handleCreatePost,
         loading , 
         posts , 
-        handleGetFeed
+        handleGetFeed, 
+        handleLike
         
 
     }

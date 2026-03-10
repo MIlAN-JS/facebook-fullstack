@@ -10,20 +10,18 @@ import Public from "./features/authentication/components/Public"
 const router = createBrowserRouter([
     {
         path : '/',
-        element : <App/>,
-        children : [
-            {   
+        element : <Login/>,
+        
+    },
+    {
+        path: "/register",
+         element :<Public> <Register/></Public>
+
+    },
+    {   
                 path : "/login", 
                 element : <Public><Login/></Public>
-            }, 
-            {
-                path : '/register', 
-                element :<Public> <Register/></Public>
             },
-           
-
-        ]
-    },
      {
                 path:"/feed",
                 element :<Protected> <Feed/></Protected>
