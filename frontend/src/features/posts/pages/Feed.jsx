@@ -47,10 +47,10 @@ const {addClicked , commentClicked} = useContext(PostContext)
       }
 
       {
-        addClicked&& ( <PostCreateWindow    />)
+        addClicked&& ( <PostCreateWindow      />)
       }
       {
-        `commentClicked && (<CommentWindow/>)`
+        commentClicked && (<CommentWindow/>)
       }
 
     

@@ -39,6 +39,7 @@ i.close{
     left: 50%;
     display: flex;
     transform: translate(-50%,-50%);
+    
 
     .post-img{
         width: 50%;
@@ -53,6 +54,60 @@ i.close{
         display: flex;
         flex-direction: column;
         width: 50%;
+        
+        
+        .right-header{
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            gap: 1rem;
+
+            .username{
+                font-size: 1.4rem;
+            }
+
+
+            .avatar{
+                width: 3.2rem;
+                height: 3.2rem;
+                border-radius: 50%;
+            }
+           
+            .options{
+                margin-left: auto;
+                background: transparent;
+                border: transparent;
+                font-size: 1.5rem;
+                color: white;
+            }
+        }
+
+        .comment-wrapper{
+            height: 60%;
+            border: 2px solid rgb(255, 3, 3);
+            overflow: auto;
+
+           
+        }
+
+        .post-actions{
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem;
+            font-size: 2.2rem;
+            
+            
+            button{
+                background: transparent;
+                border: none;
+                display: flex;
+                align-items: center;
+                color: white;
+                gap: 0.2rem;
+                font-size: 1rem;
+                
+            }
+        }
 
     }
     

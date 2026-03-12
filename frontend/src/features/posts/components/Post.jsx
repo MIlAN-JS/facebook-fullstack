@@ -26,8 +26,8 @@ const Post = () => {
         <div className='post  '>
           <div className="post-header">
             <img src={post.user.imgLink} className='avatar' alt="" />
-            <span className='username'>{post.user.fullName}</span>
-            <button className='options'>•••</button>
+              <span className='username'>{post.user.fullName}</span>
+              <button className='options'>•••</button>
 
           </div>
 
@@ -46,7 +46,8 @@ const Post = () => {
              <button
              onClick={()=>{
               setCommentClicked(prev => !prev)
-              setComments(post.comments)
+              setComments(post)
+
              }}
              className='icon comment'> <svg aria-label="Comment" className="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Comment</title><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="white" strokeLinejoin="round" strokeWidth="2"></path></svg> <span></span>0</button>
 
